@@ -27,7 +27,7 @@ bool UDVEEditorValidatorBase::CanValidateAsset_Implementation( UObject * asset )
     return true;
 }
 
-EDataValidationResult UDVEEditorValidatorBase::GetResult( UObject * in_asset, TArray< FText > & validation_errors )
+EDataValidationResult UDVEEditorValidatorBase::GetResult( const UObject * in_asset, const TArray< FText > & validation_errors )
 {
     if ( validation_errors.Num() == 0 )
     {
@@ -35,7 +35,7 @@ EDataValidationResult UDVEEditorValidatorBase::GetResult( UObject * in_asset, TA
     }
     else
     {
-        AssetFails( in_asset, FText::GetEmpty(), validation_errors );
+        AssetFails( in_asset, FText::GetEmpty() );
     }
 
     return validation_errors.Num() > 0 ? EDataValidationResult::Invalid : EDataValidationResult::Valid;

@@ -17,7 +17,7 @@ public:
     bool CanValidateAsset_Implementation( UObject * asset ) const override;
 
 protected:
-    EDataValidationResult GetResult( UObject * in_asset, TArray< FText > & validation_errors );
+    EDataValidationResult GetResult( const UObject * in_asset, const TArray< FText > & validation_errors );
 
     /* None of those directories will be validated */
     UPROPERTY( EditAnywhere )
