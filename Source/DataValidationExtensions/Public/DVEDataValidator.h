@@ -137,6 +137,21 @@ struct DATAVALIDATIONEXTENSIONS_API FDVEDataValidator
     }
 
     template < typename _TYPE_ >
+    FDVEDataValidator & IsLowerThan( const FName property_name, const _TYPE_ value, const _TYPE_ threshold )
+    {
+        if ( value >= threshold )
+        {
+            Context.AddError(
+                FText::FromString(
+                    FString::Printf( TEXT( "%s must be lower than %s. Current value : %s" ),
+                        *property_name.ToString(),
+                        *GetValueToString( threshold ),
+                        *GetValueToString( value ) ) ) );
+        }
+        return *this;
+    }
+
+    template < typename _TYPE_ >
     FDVEDataValidator & IsValid( const FName property_name, const _TYPE_ value )
     {
         if ( !value.IsValid() )
